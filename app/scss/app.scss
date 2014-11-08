@@ -14,11 +14,13 @@ html, body, .sidebar-main{
 	background-color: #a4a5a6;
 	width: 90px;
 	position: absolute;
-}
-.sidebar-main{
+
 	.side-icon, .logo{
 		margin-bottom: 5px;
-		background-color: #afafaf;
+		background-color: #cfcfcf;
+	}
+	.side-icon:hover, .logo:hover{
+		cursor:pointer;
 	}
 	.side-icon{
 		height: 90px;
@@ -30,15 +32,20 @@ html, body, .sidebar-main{
 
 .sidebar-sub{
 	width:0px;
+    position: absolute;
+	z-index: 1;
+	margin-left: 90px;
+	background-color: #cfcfcf;
+	height: 100%;
 	 /* For Safari 3.1 to 6.0 */
     -webkit-transition-property: width;
-    -webkit-transition-duration: 1s;
+    -webkit-transition-duration: .4s;
     -webkit-transition-timing-function: linear;
     /* Standard syntax */
     transition-property: width;
-    transition-duration: 1s;
+    transition-duration: .4s;
     transition-timing-function: linear;
-
+    
     &.open {
     	width: 300px;
     }
@@ -52,4 +59,14 @@ html, body, .sidebar-main{
 		margin-top: 200px;
 		background-color: #a4a5a6;
 	}
+}
+
+.modal-content{
+	box-shadow: none;
+	border-radius: 0px;
+}
+.modal-body{
+	min-height: 100px;
+	max-height: 450px;
+    overflow-y: auto;
 }

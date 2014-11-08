@@ -12,24 +12,30 @@ html, body, .sidebar-main {
   background-color: #a4a5a6;
   width: 90px;
   position: absolute; }
-
-.sidebar-main .side-icon, .sidebar-main .logo {
-  margin-bottom: 5px;
-  background-color: #afafaf; }
-.sidebar-main .side-icon {
-  height: 90px; }
-.sidebar-main .logo {
-  height: 120px; }
+  .sidebar-main .side-icon, .sidebar-main .logo {
+    margin-bottom: 5px;
+    background-color: #cfcfcf; }
+  .sidebar-main .side-icon:hover, .sidebar-main .logo:hover {
+    cursor: pointer; }
+  .sidebar-main .side-icon {
+    height: 90px; }
+  .sidebar-main .logo {
+    height: 120px; }
 
 .sidebar-sub {
   width: 0px;
+  position: absolute;
+  z-index: 1;
+  margin-left: 90px;
+  background-color: #cfcfcf;
+  height: 100%;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition-property: width;
-  -webkit-transition-duration: 1s;
+  -webkit-transition-duration: .4s;
   -webkit-transition-timing-function: linear;
   /* Standard syntax */
   transition-property: width;
-  transition-duration: 1s;
+  transition-duration: .4s;
   transition-timing-function: linear; }
   .sidebar-sub.open {
     width: 300px; }
@@ -41,5 +47,14 @@ html, body, .sidebar-main {
     height: 120px;
     margin-top: 200px;
     background-color: #a4a5a6; }
+
+.modal-content {
+  box-shadow: none;
+  border-radius: 0px; }
+
+.modal-body {
+  min-height: 100px;
+  max-height: 450px;
+  overflow-y: auto; }
 
 /*# sourceMappingURL=app.css.map */
