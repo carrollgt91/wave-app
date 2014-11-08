@@ -1,5 +1,4 @@
-var app = angular.module('wave', ["ui.router"], function() {
-
+var app = angular.module('wave', ["ui.router", "wave.controllers"], function() {
 });
 
 angular.module('wave.services', []);
@@ -9,8 +8,10 @@ angular.module('wave.controllers', []);
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
-      url: "/",
+      url: "/player",
       templateUrl: "templates/app.html",
-      controller: "RootCtrl"
-    });
+      controller: function() {
+        $scope.something = "Hello, world!";
+      }
+    })
   });
