@@ -1,3 +1,45 @@
+html, body, .sidebar-main {
+  height: 100%;
+  margin: 0px;
+  padding: 0px; }
 
+.content {
+  margin-left: 75px; }
+
+.sidebar-main {
+  margin: 0px;
+  padding: 5px;
+  background-color: #a4a5a6;
+  width: 90px;
+  position: absolute; }
+
+.sidebar-main .side-icon, .sidebar-main .logo {
+  margin-bottom: 5px;
+  background-color: #afafaf; }
+.sidebar-main .side-icon {
+  height: 90px; }
+.sidebar-main .logo {
+  height: 120px; }
+
+.sidebar-sub {
+  width: 0px;
+  /* For Safari 3.1 to 6.0 */
+  -webkit-transition-property: width;
+  -webkit-transition-duration: 1s;
+  -webkit-transition-timing-function: linear;
+  /* Standard syntax */
+  transition-property: width;
+  transition-duration: 1s;
+  transition-timing-function: linear; }
+  .sidebar-sub.open {
+    width: 300px; }
+
+.header {
+  height: 320px;
+  background-image: url(); }
+  .header .playbar {
+    height: 120px;
+    margin-top: 200px;
+    background-color: #a4a5a6; }
 
 /*# sourceMappingURL=app.css.map */
