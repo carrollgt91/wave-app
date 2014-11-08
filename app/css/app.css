@@ -41,11 +41,10 @@ html, body, .sidebar-main {
     width: 300px; }
 
 .header {
-  height: 320px;
+  height: 120px;
   background-image: url(); }
   .header .playbar {
     height: 120px;
-    margin-top: 200px;
     background-color: #a4a5a6; }
 
 .modal-content {
