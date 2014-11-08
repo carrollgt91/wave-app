@@ -10,6 +10,7 @@
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lib/soundmanager2.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/services.js"></script>
@@ -42,35 +43,38 @@
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addToPlay">
           Launch Add Modal
         </button>
-
-        <div class="modal fade" id="addToPlay">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Select a Playlist</h4>
-              </div>
-              <div class="modal-body">
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p><hr>
-                <p>PLAYLIST</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
       </div>
     </div>
   </div>
+  <div class="container-fluid content">
+    <div ui-view>
+    </div>
+  </div>
+  <!-- modal -->
+  <div class="modal fade" id="addToPlay">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Select a Playlist</h4>
+        </div>
+        <div class="modal-body">
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p><hr>
+          <p>PLAYLIST</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </body>
 </html>

@@ -1,4 +1,4 @@
-var app = angular.module('wave', ["ui.router", "wave.controllers"], function() {
+var app = angular.module('wave', ["ui.router", "wave.controllers", "wave.services"], function() {
 });
 
 angular.module('wave.services', []);
