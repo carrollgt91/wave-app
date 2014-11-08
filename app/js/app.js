@@ -10,8 +10,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('root', {
       url: "/player",
       templateUrl: "templates/app.html",
-      controller: function() {
-        $scope.something = "Hello, world!";
-      }
+      controller: "RootCtrl"
     })
   });
