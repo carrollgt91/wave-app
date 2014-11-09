@@ -1,6 +1,6 @@
 <button ng-click="startPlaying()">Play All</button>
 <ul>
-    <li ng-repeat="song in songs">
+    <li ng-repeat="song in songs" ng-click="insert(song)">
         {{ song.title }}
     </li>
 </ul>

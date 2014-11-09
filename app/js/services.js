@@ -18,6 +18,10 @@ angular.module("wave.services")
     SoundManager.pause(Playqueue.current().soundcloud_id);
   };
 
+  player.stop = function() {
+    SoundManager.stop(Playqueue.current().soundcloud_id);
+  };
+
   player.next = function() {
     var oldId = Playqueue.current().soundcloud_id;
     var next = Playqueue.next();
@@ -27,7 +31,7 @@ angular.module("wave.services")
   };
 
   player.previous = function() {
-    
+
   };
 
   player.setVolume = function(volume) {
@@ -136,8 +140,27 @@ angular.module("wave.services")
     next: function() {
       playqueue.currentIndex += 1;
       return playqueue.current();
-    }
+    },
 
+    append: function(track) {
+
+    },
+
+    previous: function() {
+
+    },
+
+    insert: function(track) {
+      var index = playqueue.currentIndex;
+      var queue = playqueue.get();
+
+      queue.splice(index, 0, track);
+      playqueue.set(queue);
+    },
+
+    jumpTo: function(id) {
+
+    }
   };
 
   return playqueue;
