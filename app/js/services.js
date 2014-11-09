@@ -118,13 +118,22 @@ angular.module("wave.services")
   var playqueue = {
 
     currentIndex: 0,
+    isShuffled: false,
 
     get: function() {
-      return JSON.parse(localStorage.playqueue);
+      if(!playqueue.isShuffled) {
+        return JSON.parse(localStorage.playqueue)
+      } else {
+        return JSON.parse(localStorage.shuffledPlayqueue)
+      }
     },
 
-    set: function(playqueue) {
-      localStorage.playqueue = JSON.stringify(playqueue);
+    set: function(pq) {
+      if(!playqueue.isShuffled) {
+        localStorage.playqueue = JSON.stringify(pq);
+      } else {
+        localStorage.shuffledPlayqueue = JSON.stringify(pq);
+      }
     },
 
     add: function(songs) {
@@ -175,6 +184,15 @@ angular.module("wave.services")
       var index = _.indexOf(pq, pqTrack);
       console.log(index);
       playqueue.currentIndex = index;
+    },
+
+    shuffle: function() {
+      var pq = playqueue.get();
+      playqueue.isShuffled = !playqueue.isShuffled;
+      if(playqueue.isShuffled) {
+        var shuffledPlayqueue = _.shuffle(pq);
+        playqueue.set(shuffledPlayqueue);
+      }
     }
   };
 
