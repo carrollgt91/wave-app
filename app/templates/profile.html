@@ -1,9 +1,9 @@
 <button ng-click="startPlaying()">Play All</button>
 <table>
 	<th>
-		<td></td><td>Title</td><td>Artists</td>
+		<td class="head">Title</td><td class="head">Artists</td>
 	</th>
-    <tr ng-repeat="song in songs" ng-click="insert(song)">
-        <td><img src="img/add.svg"></td><td>{{ song.title }}</td><td>{{ song.username }}</td>
+    <tr ng-repeat="song in songs">
+        <td ng-click="append(song)"><img src="img/add.svg"></td><td ng-click="insert(song)">{{ song.title }}</td><td ng-click="insert(song)">{{ song.username }}</td>
     </tr>
 </table>
