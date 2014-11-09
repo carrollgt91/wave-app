@@ -6,4 +6,8 @@ $( document ).ready(function() {
 		$('#splash').hide();
 		$('#app').show();
 	});
+	$('.logo').click(function(){
+		$('#app').hide();
+		$('#splash').show();
+	});
 });
