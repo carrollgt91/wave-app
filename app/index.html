@@ -96,7 +96,7 @@
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
     <ul>
-      <li class="title text-center" ng-repeat="song in Playqueue.get() track by $index">
+      <li class="title text-center" ng-repeat="song in Playqueue.get().slice(0, 10) track by $index" t>
         <img ng-src="{{ song.artwork_url }}"/>
         <div class="artist">{{ song.username }}</div>
         <span class="title">{{ song.title }}</span>
@@ -282,7 +282,7 @@
               </div>
             </div>
             <div class="row text-center sub-btns">
-              <div class="col-md-2 col-md-offset-4">
+              <div class="col-md-2 col-md-offset-4 volume" style="display:none">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 53.919 37.333" style="enable-background:new 0 0 53.919 37.333;" xml:space="preserve">
                 <g>
                   <g>
@@ -304,7 +304,7 @@
                 </g>
                 </svg>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2" ng-click="" style="display:none">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 43.204 26.927" style="enable-background:new 0 0 43.204 26.927;" xml:space="preserve">
                 <g id="old_shuffle">
                   <path d="M0,23.676c6.719,0,10.179-2.98,13.843-8.253c3.785-5.448,8.076-11.624,16.471-11.624

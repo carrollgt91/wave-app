@@ -55,6 +55,7 @@ angular.module('wave.controllers')
   $scope.next = Player.next;
   $scope.previous = Player.previous;
   $scope.Player = Player;
+  $scope.shuffle = Playqueue.shuffle;
 })
 
 .controller("SidebarCtrl", function($scope, Playqueue) {
