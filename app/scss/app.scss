@@ -61,7 +61,7 @@ html, body, .sidebar-main{
 
 .sidebar-sub{
 	width:0px;
-    position: absolute;
+    position: fixed;
 	z-index: 1;
 	margin-left: 90px;
 	background-color: #bdbdbd;
@@ -76,7 +76,25 @@ html, body, .sidebar-main{
     transition-timing-function: linear;
     
     &.open {
-    	width: 300px;
+    	width: 400px;
+    }
+    ul{
+    	overflow: hidden;
+    	list-style: none;
+    	padding: 0px;
+    	li{
+    		color:white;
+    		clear:both;
+    		img{
+    			float:left;
+    			margin: 10px;
+    		}
+    		.artist{
+    			font-family: "One", sans-serif;
+    			padding:10px;
+    			padding-top:20px;
+    		}
+    	}
     }
 }
 

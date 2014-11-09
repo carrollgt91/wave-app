@@ -45,7 +45,7 @@ html, body, .sidebar-main {
 
 .sidebar-sub {
   width: 0px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   margin-left: 90px;
   background-color: #bdbdbd;
@@ -59,7 +59,21 @@ html, body, .sidebar-main {
   transition-duration: .4s;
   transition-timing-function: linear; }
   .sidebar-sub.open {
-    width: 300px; }
+    width: 400px; }
+  .sidebar-sub ul {
+    overflow: hidden;
+    list-style: none;
+    padding: 0px; }
+    .sidebar-sub ul li {
+      color: white;
+      clear: both; }
+      .sidebar-sub ul li img {
+        float: left;
+        margin: 10px; }
+      .sidebar-sub ul li .artist {
+        font-family: "One", sans-serif;
+        padding: 10px;
+        padding-top: 20px; }
 
 /*Spalsh Page*/
 #splash {
