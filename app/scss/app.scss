@@ -20,11 +20,12 @@ html, body, .sidebar-main{
 }
 
 .sidebar-main{
+	z-index: 20;
 	margin:0px;
 	padding: 5px;
 	background-color: #a4a5a6;
 	width: 90px;
-	position: absolute;
+	position: fixed;
 
 	.side-icon, .logo{
 		margin-bottom: 5px;
@@ -79,13 +80,29 @@ html, body, .sidebar-main{
 
 /*Spalsh Page*/
 #splash{
+	padding: 0px;
+	margin: 0px;
 	width:100%;
 	height: 100%;
 	background-color:#555;
 	#back{
+		position: absolute;
 		max-width:100%;
 	}
-
+	#splashlogo{
+		position:absolute;
+		max-width:100%;
+		path, polygon, rect{
+				fill: rgba(256,256,256,0.7);
+			}
+	}
+	#splash-btn{
+		position:absolute;
+		max-width:100%;
+		path, polygon, rect, text{
+				fill: rgba(256,256,256,0.7);
+			}
+	}
 }
 
 /*Player Bar*/
