@@ -7,7 +7,7 @@ $( document ).ready(function() {
 		$('#app').show();
 	});
 	$('.logo').click(function(){
-		$('#app').hide();
+		$('.app').hide();
 		$('#splash').show();
 	});
 });
