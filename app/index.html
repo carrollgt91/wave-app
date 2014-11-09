@@ -258,9 +258,9 @@
       <div class="col-md-12 header" ng-controller="PlayCtrl">
         <div class="playbar">
           <div class="col-md-4" id="player-thumbs">
-            <img class="player-thumb" src="">
-            <img class="player-thumb" src="">
-            <img class="player-thumb" src="">
+            <img class="player-thumb" ng-if="Playqueue.get().length > 2" ng-src="{{Playqueue.get()[Playqueue.currentIndex+2].artwork_url}}">
+            <img class="player-thumb" ng-if="Playqueue.get().length > 1" ng-src="{{Playqueue.get()[Playqueue.currentIndex+1].artwork_url}}">
+            <img class="player-thumb" ng-if="Playqueue.get().length > 1" ng-src="{{Playqueue.current().artwork_url}}">
           </div>
           <div class="col-md-4 text-center">
             <div class="row text-center main-btns">
