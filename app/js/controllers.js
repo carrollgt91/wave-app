@@ -38,14 +38,20 @@ angular.module('wave.controllers')
 
   window.scope = $scope;
 })
-.controller("PlayCtrl", function($scope, Player) {
+.controller("PlayCtrl", function($scope, Player, Playqueue) {
   $scope.play = function() {
 
     Player.play();
   };
 
+  $scope.Playqueue = Playqueue;
+
   $scope.pause = Player.pause;
   $scope.next = Player.next;
   $scope.previous = Player.previous;
   $scope.Player = Player;
+})
+
+.controller("SidebarCtrl", function($scope) {
+
 });

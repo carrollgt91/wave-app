@@ -89,12 +89,12 @@
       <img src="img/playlist.svg">
       <p>PLAYLIST</p>
     </div>
-    <div class="side-icon" id="i-profile">
+    <div  id="i-profile">
       <img src="img/user.svg">
       <p>PROFILE</p>
     </div>
   </div>
-  <div class="sidebar-sub">
+  <div class="sidebar-sub" ng-controller="SidebarCtrl">
   </div>
 
   <div class="container-fluid content" id="splash" style="display:none">
@@ -321,8 +321,8 @@
           </div>
           <div class="col-md-4">
             <div class="infobox text-center">
-              <h4>Artist</h4>
-              <h5>Song Title</h5>
+              <h4>{{ Playqueue.current().username || ""}}</h4>
+              <h5>{{ Playqueue.current().title || "" }}</h5>
             </div>
           </div>
         </div>
