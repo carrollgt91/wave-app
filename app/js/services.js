@@ -158,8 +158,14 @@ angular.module("wave.services")
       playqueue.set(queue);
     },
 
-    jumpTo: function(id) {
-
+    jumpTo: function(track) {
+      var pq = playqueue.get();
+      var pqTrack = _.find(pq, function(t) {
+        return track.track_id == t.track_id
+      });
+      var index = _.indexOf(pq, pqTrack);
+      console.log(index);
+      playqueue.currentIndex = index;
     }
   };
 
