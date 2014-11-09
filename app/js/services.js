@@ -31,7 +31,11 @@ angular.module("wave.services")
   };
 
   player.previous = function() {
-
+    var oldId = Playqueue.current().soundcloud_id;
+    var next = Playqueue.previous();
+    createSound(next.soundcloud_id);
+    SoundManager.stop(oldId);
+    player.play();
   };
 
   player.setVolume = function(volume) {
@@ -147,7 +151,10 @@ angular.module("wave.services")
     },
 
     previous: function() {
-
+      if(playqueue.currentIndex != 0) {
+        playqueue.currentIndex -= 1;
+      }
+      return playqueue.current();
     },
 
     insert: function(track) {
