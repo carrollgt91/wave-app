@@ -26,6 +26,7 @@ html, body, .sidebar-main {
   .sidebar-main .side-icon:hover, .sidebar-main .logo:hover {
     cursor: pointer; }
   .sidebar-main .side-icon {
+    cursor: pointer;
     height: 90px; }
     .sidebar-main .side-icon img {
       width: 44px;
@@ -33,6 +34,7 @@ html, body, .sidebar-main {
     .sidebar-main .side-icon p {
       font-family: "One", sans-serif; }
   .sidebar-main .logo {
+    cursor: pointer;
     height: 90px;
     margin-top: 50px;
     margin-bottom: 50px; }
@@ -78,7 +80,10 @@ html, body, .sidebar-main {
     position: absolute;
     max-width: 100%; }
     #splash #splash-btn path, #splash #splash-btn polygon, #splash #splash-btn rect, #splash #splash-btn text {
+      cursor: pointer;
       fill: rgba(255, 255, 255, 0.7); }
+    #splash #splash-btn path:hover, #splash #splash-btn polygon:hover, #splash #splash-btn rect:hover, #splash #splash-btn text {
+      fill: rgba(255, 255, 255, 0.9); }
 
 /*Player Bar*/
 .header {
@@ -95,8 +100,10 @@ html, body, .sidebar-main {
       .header .playbar .main-btns img {
         min-height: 50px;
         max-width: 70px;
-        margin: 10px; }
+        margin: 10px;
+        cursor: pointer; }
     .header .playbar .sub-btns svg {
+      cursor: pointer;
       max-width: 40px;
       margin: 12px;
       margin-left: 0px; }
