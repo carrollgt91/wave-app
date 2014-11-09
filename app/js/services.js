@@ -30,27 +30,39 @@ angular.module("wave.services")
 
   };
 
- SoundManager.createSound({
+  SoundManager.createSound({
         
-  id: 'track_124907822',
-  url: 'https://api.soundcloud.com/tracks/124907822/stream?client_id=251c9152fb3757d609504877ed494ae0',
-  
-  onplay: function() {
-
-  },
-
-  onresume: function() {
+    id: 'track_124907822',
+    url: 'https://api.soundcloud.com/tracks/124907822/stream?client_id=251c9152fb3757d609504877ed494ae0',
     
-  },
-  
-  onpause: function() {
+    onplay: function() {
+
+    },
+
+    onresume: function() {
+      
+    },
     
-  },
-  
-  onfinish: function() {
-    nextTrack();
-  }
-  
-});
+    onpause: function() {
+
+    },
+    
+    onfinish: function() {
+      nextTrack();
+    }
+    
+  });
   return player;
+})
+
+.service("Playlists", function(){
+  return {
+    get: function(id){
+      return{
+        id: id,
+        name: 'something',
+        tracks: ['blah1', 'blah2', 'blah3']
+      }
+    }
+  }
 });
