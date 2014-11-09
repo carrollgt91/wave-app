@@ -40,6 +40,13 @@ angular.module('wave.controllers')
       Playqueue.add($scope.songs);
       Player.play();
     };
+
+    $scope.insert = function(song) {
+      Player.stop();
+      Playqueue.insert(song);
+      Player.play();
+    };
+
     $scope.songs = data;
     console.log($scope.songs)
   });

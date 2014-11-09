@@ -18,6 +18,10 @@ angular.module("wave.services")
     SoundManager.pause(Playqueue.current().soundcloud_id);
   };
 
+  player.stop = function() {
+    SoundManager.stop(Playqueue.current().soundcloud_id);
+  };
+
   player.next = function() {
     var oldId = Playqueue.current().soundcloud_id;
     var next = Playqueue.next();
@@ -27,7 +31,11 @@ angular.module("wave.services")
   };
 
   player.previous = function() {
-    
+    var oldId = Playqueue.current().soundcloud_id;
+    var next = Playqueue.previous();
+    createSound(next.soundcloud_id);
+    SoundManager.stop(oldId);
+    player.play();
   };
 
   player.setVolume = function(volume) {
@@ -136,8 +144,38 @@ angular.module("wave.services")
     next: function() {
       playqueue.currentIndex += 1;
       return playqueue.current();
-    }
+    },
 
+    append: function(track) {
+      var queue = playqueue.get();
+      queue.push(track);
+      playqueue.set(queue);
+    },
+
+    previous: function() {
+      if(playqueue.currentIndex != 0) {
+        playqueue.currentIndex -= 1;
+      }
+      return playqueue.current();
+    },
+
+    insert: function(track) {
+      var index = playqueue.currentIndex;
+      var queue = playqueue.get();
+
+      queue.splice(index, 0, track);
+      playqueue.set(queue);
+    },
+
+    jumpTo: function(track) {
+      var pq = playqueue.get();
+      var pqTrack = _.find(pq, function(t) {
+        return track.track_id == t.track_id
+      });
+      var index = _.indexOf(pq, pqTrack);
+      console.log(index);
+      playqueue.currentIndex = index;
+    }
   };
 
   return playqueue;
