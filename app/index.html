@@ -81,20 +81,27 @@
       </g>
       </svg>
     </div>
-    <div class="side-icon" id="i-queue">
+    <div class="side-icon expand-sidebar" id="i-queue">
       <img src="img/queue.svg" style="padding-top:20px;">
       <p>QUEUE</p>
     </div>
-    <div class="side-icon" id="i-playlist">
+    <div class="side-icon expand-sidebar" id="i-playlist">
       <img src="img/playlist.svg">
       <p>PLAYLIST</p>
     </div>
-    <div  id="i-profile">
+    <div class="side-icon" id="i-profile">
       <img src="img/user.svg">
       <p>PROFILE</p>
     </div>
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
+    <ul>
+      <li class="title" ng-repeat="song in playqueue">
+        <!-- <img src ="{{ song.artwork_url }}"/> -->
+        <span class="artist">{{ song.username }}</span>
+        <span class="title">{{ song.title }}</span>
+      </li>
+    </ul>
   </div>
 
   <div class="container-fluid content" id="splash" style="display:none">

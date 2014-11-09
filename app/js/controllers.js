@@ -27,7 +27,8 @@ angular.module('wave.controllers')
     };
 
     $scope.insert = function(song) {
-      Player.stop();
+      if(Player.playing)
+        Player.stop();
       Playqueue.insert(song);
       Player.play();
     };
@@ -52,6 +53,6 @@ angular.module('wave.controllers')
   $scope.Player = Player;
 })
 
-.controller("SidebarCtrl", function($scope) {
-
+.controller("SidebarCtrl", function($scope, Playqueue) {
+  $scope.playqueue = Playqueue.get();
 });
