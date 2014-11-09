@@ -6,20 +6,25 @@ angular.module("wave.services")
  
   var player = {};
 
+  player.playing = false;
+
   player.play = function() {
     var id = Playqueue.current().soundcloud_id;
     if(!SoundManager.getSoundById(id)) {
       createSound(id);
     }
     soundManager.play(id);
+    player.playing = true;
   };
 
   player.pause = function() {
     SoundManager.pause(Playqueue.current().soundcloud_id);
+    player.playing = false;
   };
 
   player.stop = function() {
     SoundManager.stop(Playqueue.current().soundcloud_id);
+    player.playing = false;
   };
 
   player.next = function() {

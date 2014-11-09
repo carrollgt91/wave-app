@@ -97,7 +97,7 @@
   <div class="sidebar-sub">
   </div>
 
-  <div class="container-fluid content" id="splash">
+  <div class="container-fluid content" id="splash" style="display:none">
     <img src="img/splashimage.jpg" id="back">
     <svg id="splashlogo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 2000 1335" enable-background="new 0 0 2000 1335" xml:space="preserve">
@@ -246,9 +246,9 @@
     </svg>
   </div>
 
-  <div id="app" style="display:none" class="container-fluid content">
+  <div id="app" style="" class="container-fluid content">
     <div class="row">
-      <div class="col-md-12 header">
+      <div class="col-md-12 header" ng-controller="PlayCtrl">
         <div class="playbar">
           <div class="col-md-4" id="player-thumbs">
             <img class="player-thumb" src="">
@@ -259,13 +259,16 @@
             <div class="row text-center main-btns">
               <div class="col-md-10 col-md-offset-1">
                 <div class="row text-center">
-                  <div class="col-md-4">
+                  <div class="col-md-4" ng-click="previous()">
                     <img src="img/previous.svg">
                   </div>
-                  <div class="col-md-4">
-                    <img src="img/play.svg">
+                  <div class="col-md-4" ng-if="!Player.playing" >
+                    <img src="img/play.svg" ng-click="play()">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4" ng-if="Player.playing" >
+                    <img src="img/pause.svg" id="pause" ng-click="pause()">
+                  </div>
+                  <div class="col-md-4" ng-click="next()">
                     <img src="img/next.svg">
                   </div>
                 </div>
@@ -333,7 +336,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid content">
+  <div class="container-fluid content routes">
     <div ui-view>
     </div>
   </div>

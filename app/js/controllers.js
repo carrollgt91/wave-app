@@ -1,8 +1,5 @@
 angular.module('wave.controllers')
 .controller('RootCtrl', function($scope, $location, Player, Playlists, Playqueue, Users) {
-  $scope.something = "Hello, world! Hello";
-  var playing = false;
-
   $scope.createUser = function(user) {
     var promise = Users.create(user.username, user.id);
 
@@ -10,18 +7,6 @@ angular.module('wave.controllers')
       Users.setCurrent(data);
       $location.path("/profile");
     });
-  };
-
-  $scope.playpause = function(){
-  	
-  	if (playing == true){
-  		Player.pause();
-  		playing = false;
-  	}
-  	else{
-  		Player.play();
-  		playing = true;
-  	}
   };
 })
 .controller('ProfileCtrl', function($scope, Users, Playqueue, Player) {
@@ -52,4 +37,15 @@ angular.module('wave.controllers')
   });
 
   window.scope = $scope;
+})
+.controller("PlayCtrl", function($scope, Player) {
+  $scope.play = function() {
+
+    Player.play();
+  };
+
+  $scope.pause = Player.pause;
+  $scope.next = Player.next;
+  $scope.previous = Player.previous;
+  $scope.Player = Player;
 });
