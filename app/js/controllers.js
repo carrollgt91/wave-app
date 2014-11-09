@@ -1,5 +1,5 @@
 angular.module('wave.controllers')
-.controller('RootCtrl', function($scope, Player, Playlists) {
+.controller('RootCtrl', function($scope, Player, Playlists, Playqueue) {
   $scope.something = "Hello, world! Hello";
   var playing = false;
   $scope.playpause = function(){
@@ -14,5 +14,7 @@ angular.module('wave.controllers')
   	}
   };
   console.log(Player);
-  console.log(Playlists.get());
+  console.log(Playlists.get(0));
+  console.log(Playqueue.currentTrack());
+  console.log(Playqueue.allTracks());
 });

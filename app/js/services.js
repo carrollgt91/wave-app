@@ -56,12 +56,14 @@ angular.module("wave.services")
 })
 
 .service("Playlists", function(){
+
   return {
     get: function(id){
       var client = 'stream?client_id=251c9152fb3757d609504877ed494ae0';
-      return{
+      var list = {};
+      list = {
         id: id,
-        name: 'something',
+        name: 'listsomething',
         tracks: [
           {id:153711334,
           uri: 'https://api.soundcloud.com/tracks/153711334/' + client,
@@ -88,6 +90,22 @@ angular.module("wave.services")
           title: 'EZRA x DUNLOP - NOT ENOUGH Feat. Tyson',
           pos: 1}]
       }
+      list.tracks = list.tracks.sort(function(a, b){
+        return a.pos-b.pos
+      });
+      return list;
     }
   }
-});
+})
+
+.service("Playqueue", function(Playlists){
+  return {
+    currentTrack: function(){
+      var all = Playlists.get(0).tracks;
+      return all[0];
+    },
+    allTracks: function(){
+      return Playlists.get(0).tracks;
+    }
+  }
+})
