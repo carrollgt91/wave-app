@@ -96,8 +96,8 @@
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
     <ul>
-      <li class="title" ng-repeat="song in playqueue">
-        <!-- <img src ="{{ song.artwork_url }}"/> -->
+      <li class="title" ng-repeat="song in Playqueue.get() track by $index" t>
+        <img ng-src="{{ song.artwork_url }}"/>
         <span class="artist">{{ song.username }}</span>
         <span class="title">{{ song.title }}</span>
       </li>
