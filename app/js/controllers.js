@@ -33,6 +33,10 @@ angular.module('wave.controllers')
       Player.play();
     };
 
+    $scope.append = function(song) {
+      Playqueue.append(song);
+    };
+
     $scope.songs = data;
     console.log($scope.songs)
   });
