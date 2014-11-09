@@ -4,10 +4,12 @@ $( document ).ready(function() {
 	});
 	$('.splash-btn').click(function(){
 		$('#splash').hide();
-		$('#app').show();
+		$('.app').show();
+    $('.app2').show();
 	});
 	$('.logo').click(function(){
 		$('.app').hide();
+    $('.app2').hide();
 		$('#splash').show();
 	});
 });
