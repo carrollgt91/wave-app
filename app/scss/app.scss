@@ -1,4 +1,14 @@
+@font-face {
+  font-family: "One";
+  src: url(fonts/AWConquerorCarved/AWConquerorCarved-One.otf) format("opentype");
+}
+@font-face {
+  font-family: "Light";
+  src: url(fonts/AWConquerorSans/AWConquerorSans-Light.otf) format("opentype");
+}
+
 html, body, .sidebar-main{
+	font-family: "Light", sans-serif; 
     height: 100%;
     margin: 0px;
     padding: 0px;
@@ -18,16 +28,27 @@ html, body, .sidebar-main{
 
 	.side-icon, .logo{
 		margin-bottom: 5px;
-		background-color: #cfcfcf;
 	}
 	.side-icon:hover, .logo:hover{
 		cursor:pointer;
 	}
 	.side-icon{
 		height: 90px;
+		img{
+			height:54px;
+			width: 44px;
+			margin: 18px;
+		}
 	}
 	.logo{
 		height: 90px;
+
+		svg{
+			margin: 8px;
+			path, polygon, rect{
+				fill: #dbdbdb;
+			}
+		}
 	}
 }
 
@@ -36,7 +57,7 @@ html, body, .sidebar-main{
     position: absolute;
 	z-index: 1;
 	margin-left: 90px;
-	background-color: #cfcfcf;
+	background-color: #bdbdbd;
 	height: 100%;
 	 /* For Safari 3.1 to 6.0 */
     -webkit-transition-property: width;
@@ -52,12 +73,31 @@ html, body, .sidebar-main{
     }
 }
 
+/*Player Bar*/
 .header{
-	height: 120px;
+	height: 320px;
+	padding-right: 0px;
 	background-image:url();
 	.playbar{
 		height:120px;
-		background-color: #a4a5a6;
+		background-color: #dbdbdb;
+		margin-top: 200px;
+
+		.main-btns {
+			max-height:50px;
+			img{
+				max-width: 70px;
+				margin: 10px;
+			}
+		}
+		.sub-btns svg{
+			max-width: 40px;
+			margin: 12px;
+			margin-left: 0px;	
+			path {
+				fill: #a4a5a6;
+			}	
+		}
 	}
 }
 
