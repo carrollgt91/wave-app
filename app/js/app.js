@@ -2,6 +2,7 @@ var app = angular.module('wave', ["ui.router", "wave.controllers", "wave.service
 });
 
 var rootUrl = "http://localhost:3000/api";
+var clientId = "251c9152fb3757d609504877ed494ae0";
 
 angular.module('wave.services', []);
 angular.module('wave.controllers', []);
@@ -10,8 +11,13 @@ angular.module('wave.controllers', []);
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
-      url: "/player",
+      url: "/create",
       templateUrl: "templates/app.html",
       controller: "RootCtrl"
+    })
+    .state('profile', {
+      url: "/profile",
+      templateUrl: "templates/profile.html",
+      controller: "ProfileCtrl"
     })
   });

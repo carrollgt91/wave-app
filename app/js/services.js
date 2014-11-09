@@ -2,24 +2,32 @@ angular.module("wave.services")
 .service("SoundManager", function ($window){
   return $window.soundManager;
 })
-.service("Player", function(SoundManager) {
+.service("Player", function(SoundManager, Playqueue) {
  
   var player = {};
 
   player.play = function() {
-    soundManager.play('track_124907822');
+    var id = Playqueue.current().soundcloud_id;
+    if(!SoundManager.getSoundById(id)) {
+      createSound(id);
+    }
+    soundManager.play(id);
   };
 
   player.pause = function() {
-    soundManager.pause('track_124907822');
+    SoundManager.pause(Playqueue.current().soundcloud_id);
   };
 
   player.next = function() {
-
+    var oldId = Playqueue.current().soundcloud_id;
+    var next = Playqueue.next();
+    createSound(next.soundcloud_id);
+    SoundManager.stop(oldId);
+    player.play();
   };
 
   player.previous = function() {
-
+    
   };
 
   player.setVolume = function(volume) {
@@ -30,28 +38,28 @@ angular.module("wave.services")
 
   };
 
-  SoundManager.createSound({
-        
-    id: 'track_124907822',
-    url: 'https://api.soundcloud.com/tracks/124907822/stream?client_id=251c9152fb3757d609504877ed494ae0',
-    
-    onplay: function() {
-
-    },
-
-    onresume: function() {
+  var createSound = function(id) {
+    SoundManager.createSound({  
+      id: id,
+      url: 'https://api.soundcloud.com/tracks/'+ id + '/stream?client_id=' + clientId,
       
-    },
-    
-    onpause: function() {
+      onplay: function() {
 
-    },
-    
-    onfinish: function() {
-      nextTrack();
-    }
-    
-  });
+      },
+
+      onresume: function() {
+        
+      },
+      
+      onpause: function() {
+
+      },
+      
+      onfinish: function() {
+        player.next();
+      }
+    });
+  };
   return player;
 })
 
@@ -99,30 +107,79 @@ angular.module("wave.services")
 })
 
 .service("Playqueue", function(Playlists){
-  return {
-    currentTrack: function(){
-      var all = Playlists.get(0).tracks;
-      return all[0];
+  var playqueue = {
+
+    currentIndex: 0,
+
+    get: function() {
+      return JSON.parse(localStorage.playqueue);
     },
-    allTracks: function(){
-      return Playlists.get(0).tracks;
+
+    set: function(playqueue) {
+      localStorage.playqueue = JSON.stringify(playqueue);
+    },
+
+    add: function(songs) {
+      var currentQueue = playqueue.get();
+      var queue = currentQueue.concat(songs);
+      playqueue.set(queue);
+    },
+
+    clear: function() {
+      playqueue.set([]);
+    },
+
+    current: function() {
+      return playqueue.get()[playqueue.currentIndex];
+    },
+
+    next: function() {
+      playqueue.currentIndex += 1;
+      return playqueue.current();
     }
-  }
+
+  };
+
+  return playqueue;
 })
 
 .service("Users", function($http, $q){
   var users = {};
-  var deferred = $q.defer();
+  
 
   users.current = function() {
-    JSON.parse(localStorage.getItem("currentUser"));
+    return JSON.parse(localStorage.getItem("currentUser"));
   };
 
-  users. setCurrent = function(user) {
+  users.getPlayqueue = function() {
+    var deferred = $q.defer();
+
+    $http.get(rootUrl + "/users/" + users.current().user_id + "/playqueue?format=json").success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).error(function(data, status, headers, config) {
+      console.log("error get playqueue user: " + data.body);
+    })
+    return deferred.promise;
+  };
+
+  users.getLikes = function() {
+    var deferred = $q.defer();
+
+    $http.get(rootUrl + "/users/" + users.current().user_id + "/tracks?format=json").success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).error(function(data, status, headers, config) {
+      console.log("error get playqueue user: " + data.body);
+    })
+    return deferred.promise;
+  };
+
+  users.setCurrent = function(user) {
     localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
   users.create = function(username, id) {
+    var deferred = $q.defer();
+
     $http.post(rootUrl + "/users?format=json", {username: username, soundcloud_id: id}).success(function(data, status, headers, config) {
       deferred.resolve(data);
     }).error(function(data, status, headers, config) {
