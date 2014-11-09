@@ -96,9 +96,9 @@
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
     <ul>
-      <li class="title" ng-repeat="song in Playqueue.get() track by $index" t>
+      <li class="title text-center" ng-repeat="song in Playqueue.get() track by $index">
         <img ng-src="{{ song.artwork_url }}"/>
-        <span class="artist">{{ song.username }}</span>
+        <div class="artist">{{ song.username }}</div>
         <span class="title">{{ song.title }}</span>
       </li>
     </ul>
@@ -257,7 +257,7 @@
     <div class="row">
       <div class="col-md-12 header" ng-controller="PlayCtrl">
         <div class="playbar">
-          <div class="col-md-4" id="player-thumbs">
+          <div class="col-md-4 text-center" id="player-thumbs">
             <img class="player-thumb" ng-if="Playqueue.get().length > 2" ng-src="{{Playqueue.get()[Playqueue.currentIndex+2].artwork_url}}">
             <img class="player-thumb" ng-if="Playqueue.get().length > 1" ng-src="{{Playqueue.get()[Playqueue.currentIndex+1].artwork_url}}">
             <img class="player-thumb" ng-if="Playqueue.get().length > 1" ng-src="{{Playqueue.current().artwork_url}}">
