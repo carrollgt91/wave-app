@@ -77,6 +77,17 @@ html, body, .sidebar-main{
     }
 }
 
+/*Spalsh Page*/
+#splash{
+	width:100%;
+	height: 100%;
+	background-color:#555;
+	#back{
+		max-width:100%;
+	}
+
+}
+
 /*Player Bar*/
 .header{
 	height: 336px;
