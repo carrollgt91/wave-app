@@ -147,7 +147,9 @@ angular.module("wave.services")
     },
 
     append: function(track) {
-
+      var queue = playqueue.get();
+      queue.push(track);
+      playqueue.set(queue);
     },
 
     previous: function() {
