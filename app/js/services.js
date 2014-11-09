@@ -99,30 +99,74 @@ angular.module("wave.services")
 })
 
 .service("Playqueue", function(Playlists){
-  return {
-    currentTrack: function(){
-      var all = Playlists.get(0).tracks;
-      return all[0];
+  var playqueue = {
+
+    currentIndex: 0,
+
+    get: function() {
+      return JSON.parse(localStorage.playqueue);
     },
-    allTracks: function(){
-      return Playlists.get(0).tracks;
+
+    set: function(playqueue) {
+      localStorage.playqueue = JSON.stringify(playqueue);
+    },
+
+    add: function(songs) {
+      var currentQueue = playqueue.get();
+      var queue = currentQueue.concat(songs);
+      playqueue.set(queue);
+    },
+
+    clear: function() {
+      playqueue.set([]);
+    },
+
+    current: function() {
+      return playqueue.get()[playqueue.currentIndex];
     }
-  }
+
+  };
+
+  return playqueue;
 })
 
 .service("Users", function($http, $q){
   var users = {};
-  var deferred = $q.defer();
+  
 
   users.current = function() {
-    JSON.parse(localStorage.getItem("currentUser"));
+    return JSON.parse(localStorage.getItem("currentUser"));
   };
 
-  users. setCurrent = function(user) {
+  users.getPlayqueue = function() {
+    var deferred = $q.defer();
+
+    $http.get(rootUrl + "/users/" + users.current().user_id + "/playqueue?format=json").success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).error(function(data, status, headers, config) {
+      console.log("error get playqueue user: " + data.body);
+    })
+    return deferred.promise;
+  };
+
+  users.getLikes = function() {
+    var deferred = $q.defer();
+
+    $http.get(rootUrl + "/users/" + users.current().user_id + "/tracks?format=json").success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).error(function(data, status, headers, config) {
+      console.log("error get playqueue user: " + data.body);
+    })
+    return deferred.promise;
+  };
+
+  users.setCurrent = function(user) {
     localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
   users.create = function(username, id) {
+    var deferred = $q.defer();
+
     $http.post(rootUrl + "/users?format=json", {username: username, soundcloud_id: id}).success(function(data, status, headers, config) {
       deferred.resolve(data);
     }).error(function(data, status, headers, config) {

@@ -10,8 +10,13 @@ angular.module('wave.controllers', []);
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
-      url: "/player",
+      url: "/create",
       templateUrl: "templates/app.html",
       controller: "RootCtrl"
+    })
+    .state('profile', {
+      url: "/profile",
+      templateUrl: "templates/profile.html",
+      controller: "ProfileCtrl"
     })
   });
