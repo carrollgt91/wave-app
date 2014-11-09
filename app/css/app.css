@@ -87,9 +87,10 @@ html, body, .sidebar-main {
 
 /*Player Bar*/
 .header {
+  max-width: 100%;
   height: 336px;
   padding-right: 0px;
-  background-image: url(); }
+  background-image: url("../img/headerimage.jpg"); }
   .header .playbar {
     height: 136px;
     background-color: #dbdbdb;
@@ -98,7 +99,7 @@ html, body, .sidebar-main {
     .header .playbar .main-btns {
       max-height: 50px; }
       .header .playbar .main-btns img {
-        min-height: 50px;
+        height: 50px;
         max-width: 70px;
         margin: 10px;
         cursor: pointer; }
@@ -131,5 +132,9 @@ html, body, .sidebar-main {
 
 .btn {
   border-radius: 0px; }
+
+/*Table Style*/
+td img {
+  height: 18px; }
 
 /*# sourceMappingURL=app.css.map */
