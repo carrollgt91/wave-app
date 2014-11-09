@@ -34,6 +34,7 @@ html, body, .sidebar-main{
 		cursor:pointer;
 	}
 	.side-icon{
+		cursor: pointer;
 		height: 90px;
 		img{
 			
@@ -45,6 +46,7 @@ html, body, .sidebar-main{
 		}
 	}
 	.logo{
+		cursor: pointer;
 		height: 90px;
 		margin-top:50px;
 		margin-bottom:50px;
@@ -100,9 +102,14 @@ html, body, .sidebar-main{
 		position:absolute;
 		max-width:100%;
 		path, polygon, rect, text{
-				fill: rgba(256,256,256,0.7);
-			}
+			cursor: pointer;
+			fill: rgba(256,256,256,0.7);
+		}
+		path:hover, polygon:hover, rect:hover, text{
+			fill: rgba(256,256,256,0.9);
+		}
 	}
+
 }
 
 /*Player Bar*/
@@ -122,9 +129,11 @@ html, body, .sidebar-main{
 				min-height:50px;
 				max-width: 70px;
 				margin: 10px;
+				cursor: pointer;
 			}
 		}
 		.sub-btns svg{
+			cursor: pointer;
 			max-width: 40px;
 			margin: 12px;
 			margin-left: 0px;	
