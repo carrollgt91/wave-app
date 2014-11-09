@@ -2,24 +2,32 @@ angular.module("wave.services")
 .service("SoundManager", function ($window){
   return $window.soundManager;
 })
-.service("Player", function(SoundManager) {
+.service("Player", function(SoundManager, Playqueue) {
  
   var player = {};
 
   player.play = function() {
-    soundManager.play('track_124907822');
+    var id = Playqueue.current().soundcloud_id;
+    if(!SoundManager.getSoundById(id)) {
+      createSound(id);
+    }
+    soundManager.play(id);
   };
 
   player.pause = function() {
-    soundManager.pause('track_124907822');
+    SoundManager.pause(Playqueue.current().soundcloud_id);
   };
 
   player.next = function() {
-
+    var oldId = Playqueue.current().soundcloud_id;
+    var next = Playqueue.next();
+    createSound(next.soundcloud_id);
+    SoundManager.stop(oldId);
+    player.play();
   };
 
   player.previous = function() {
-
+    
   };
 
   player.setVolume = function(volume) {
@@ -30,28 +38,28 @@ angular.module("wave.services")
 
   };
 
-  SoundManager.createSound({
-        
-    id: 'track_124907822',
-    url: 'https://api.soundcloud.com/tracks/124907822/stream?client_id=251c9152fb3757d609504877ed494ae0',
-    
-    onplay: function() {
-
-    },
-
-    onresume: function() {
+  var createSound = function(id) {
+    SoundManager.createSound({  
+      id: id,
+      url: 'https://api.soundcloud.com/tracks/'+ id + '/stream?client_id=' + clientId,
       
-    },
-    
-    onpause: function() {
+      onplay: function() {
 
-    },
-    
-    onfinish: function() {
-      nextTrack();
-    }
-    
-  });
+      },
+
+      onresume: function() {
+        
+      },
+      
+      onpause: function() {
+
+      },
+      
+      onfinish: function() {
+        player.next();
+      }
+    });
+  };
   return player;
 })
 
@@ -123,6 +131,11 @@ angular.module("wave.services")
 
     current: function() {
       return playqueue.get()[playqueue.currentIndex];
+    },
+
+    next: function() {
+      playqueue.currentIndex += 1;
+      return playqueue.current();
     }
 
   };

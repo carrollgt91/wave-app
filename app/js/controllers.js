@@ -24,7 +24,9 @@ angular.module('wave.controllers')
   	}
   };
 })
-.controller('ProfileCtrl', function($scope, Users, Playqueue) {
+.controller('ProfileCtrl', function($scope, Users, Playqueue, Player) {
+  $scope.Playqueue = Playqueue;
+  $scope.Player = Player;
 
   var playqueue = Users.getPlayqueue();
   playqueue.then(function(queue) {
@@ -36,8 +38,11 @@ angular.module('wave.controllers')
     $scope.startPlaying = function() {
       Playqueue.clear();
       Playqueue.add($scope.songs);
+      Player.play();
     };
     $scope.songs = data;
     console.log($scope.songs)
   });
+
+  window.scope = $scope;
 });

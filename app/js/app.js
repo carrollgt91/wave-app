@@ -2,6 +2,7 @@ var app = angular.module('wave', ["ui.router", "wave.controllers", "wave.service
 });
 
 var rootUrl = "http://localhost:3000/api";
+var clientId = "251c9152fb3757d609504877ed494ae0";
 
 angular.module('wave.services', []);
 angular.module('wave.controllers', []);
