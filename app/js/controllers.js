@@ -22,7 +22,6 @@ angular.module('wave.controllers')
   likes.then(function(data) {
     $scope.startPlaying = function() {
       Playqueue.clear();
-      Playqueue.add($scope.songs);
       Player.play();
     };
 
@@ -43,11 +42,17 @@ angular.module('wave.controllers')
 
   window.scope = $scope;
 })
-.controller("PlayCtrl", function($scope, Player, Playqueue) {
-  $scope.play = function() {
-
-    Player.play();
-  };
+.controller("PlayCtrl", function($scope, Player, Playqueue, Users) {
+  var likes = Users.getLikes();
+  likes.then(function(data) {
+    $scope.play = function() {
+      if(Playqueue.get().length == 0) {
+        Playqueue.add(data);
+      }
+      Player.play();
+    };
+  });
+  
 
   $scope.Playqueue = Playqueue;
 
