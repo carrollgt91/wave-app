@@ -27,11 +27,14 @@ html, body, .sidebar-main {
   .sidebar-main .side-icon {
     height: 90px; }
     .sidebar-main .side-icon img {
-      height: 54px;
       width: 44px;
       margin: 18px; }
+    .sidebar-main .side-icon p {
+      font-family: "One", sans-serif; }
   .sidebar-main .logo {
-    height: 90px; }
+    height: 90px;
+    margin-top: 50px;
+    margin-bottom: 50px; }
     .sidebar-main .logo svg {
       margin: 8px; }
       .sidebar-main .logo svg path, .sidebar-main .logo svg polygon, .sidebar-main .logo svg rect {
@@ -57,16 +60,18 @@ html, body, .sidebar-main {
 
 /*Player Bar*/
 .header {
-  height: 320px;
+  height: 336px;
   padding-right: 0px;
   background-image: url(); }
   .header .playbar {
-    height: 120px;
+    height: 136px;
     background-color: #dbdbdb;
-    margin-top: 200px; }
+    margin-top: 200px;
+    padding-top: 12px; }
     .header .playbar .main-btns {
       max-height: 50px; }
       .header .playbar .main-btns img {
+        min-height: 50px;
         max-width: 70px;
         margin: 10px; }
     .header .playbar .sub-btns svg {
@@ -75,6 +80,15 @@ html, body, .sidebar-main {
       margin-left: 0px; }
       .header .playbar .sub-btns svg path {
         fill: #a4a5a6; }
+    .header .playbar .infobox {
+      background-color: #ffffff;
+      height: 112px;
+      padding: 20px;
+      width: 95%; }
+      .header .playbar .infobox h4 {
+        font-family: "One", sans-serif; }
+      .header .playbar .infobox h5 {
+        font-family: "Light", sans-serif; }
 
 /* General Site Wide */
 .modal-content {

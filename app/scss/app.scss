@@ -35,14 +35,18 @@ html, body, .sidebar-main{
 	.side-icon{
 		height: 90px;
 		img{
-			height:54px;
+			
 			width: 44px;
 			margin: 18px;
+		}
+		p{
+			font-family: "One", sans-serif; 	
 		}
 	}
 	.logo{
 		height: 90px;
-
+		margin-top:50px;
+		margin-bottom:50px;
 		svg{
 			margin: 8px;
 			path, polygon, rect{
@@ -75,17 +79,19 @@ html, body, .sidebar-main{
 
 /*Player Bar*/
 .header{
-	height: 320px;
+	height: 336px;
 	padding-right: 0px;
 	background-image:url();
 	.playbar{
-		height:120px;
+		height:136px;
 		background-color: #dbdbdb;
 		margin-top: 200px;
+		padding-top:12px;
 
 		.main-btns {
 			max-height:50px;
 			img{
+				min-height:50px;
 				max-width: 70px;
 				margin: 10px;
 			}
@@ -97,6 +103,19 @@ html, body, .sidebar-main{
 			path {
 				fill: #a4a5a6;
 			}	
+		}
+
+		.infobox{
+			background-color:#ffffff;
+			height: 112px;
+			padding: 20px;
+			width:95%;
+			h4{
+				font-family: "One", sans-serif;
+			}
+			h5{
+				font-family: "Light", sans-serif;
+			}
 		}
 	}
 }
