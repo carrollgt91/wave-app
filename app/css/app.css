@@ -1,4 +1,11 @@
+@font-face {
+  font-family: "One";
+  src: url(fonts/AWConquerorCarved/AWConquerorCarved-One.otf) format("opentype"); }
+@font-face {
+  font-family: "Light";
+  src: url(fonts/AWConquerorSans/AWConquerorSans-Light.otf) format("opentype"); }
 html, body, .sidebar-main {
+  font-family: "Light", sans-serif;
   height: 100%;
   margin: 0px;
   padding: 0px; }
@@ -14,21 +21,28 @@ html, body, .sidebar-main {
   width: 90px;
   position: absolute; }
   .sidebar-main .side-icon, .sidebar-main .logo {
-    margin-bottom: 5px;
-    background-color: #cfcfcf; }
+    margin-bottom: 5px; }
   .sidebar-main .side-icon:hover, .sidebar-main .logo:hover {
     cursor: pointer; }
   .sidebar-main .side-icon {
     height: 90px; }
+    .sidebar-main .side-icon img {
+      height: 54px;
+      width: 44px;
+      margin: 18px; }
   .sidebar-main .logo {
     height: 90px; }
+    .sidebar-main .logo svg {
+      margin: 8px; }
+      .sidebar-main .logo svg path, .sidebar-main .logo svg polygon, .sidebar-main .logo svg rect {
+        fill: #dbdbdb; }
 
 .sidebar-sub {
   width: 0px;
   position: absolute;
   z-index: 1;
   margin-left: 90px;
-  background-color: #cfcfcf;
+  background-color: #bdbdbd;
   height: 100%;
   /* For Safari 3.1 to 6.0 */
   -webkit-transition-property: width;
@@ -41,12 +55,26 @@ html, body, .sidebar-main {
   .sidebar-sub.open {
     width: 300px; }
 
+/*Player Bar*/
 .header {
-  height: 120px;
+  height: 320px;
+  padding-right: 0px;
   background-image: url(); }
   .header .playbar {
     height: 120px;
-    background-color: #a4a5a6; }
+    background-color: #dbdbdb;
+    margin-top: 200px; }
+    .header .playbar .main-btns {
+      max-height: 50px; }
+      .header .playbar .main-btns img {
+        max-width: 70px;
+        margin: 10px; }
+    .header .playbar .sub-btns svg {
+      max-width: 40px;
+      margin: 12px;
+      margin-left: 0px; }
+      .header .playbar .sub-btns svg path {
+        fill: #a4a5a6; }
 
 /* General Site Wide */
 .modal-content {
