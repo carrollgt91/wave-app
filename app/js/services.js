@@ -109,3 +109,26 @@ angular.module("wave.services")
     }
   }
 })
+
+.service("Users", function($http, $q){
+  var users = {};
+  var deferred = $q.defer();
+
+  users.current = function() {
+    JSON.parse(localStorage.getItem("currentUser"));
+  };
+
+  users. setCurrent = function(user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+  };
+
+  users.create = function(username, id) {
+    $http.post(rootUrl + "/users?format=json", {username: username, soundcloud_id: id}).success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).error(function(data, status, headers, config) {
+      console.log("error create user: " + data.body);
+    })
+    return deferred.promise;
+  };
+  return users;
+})

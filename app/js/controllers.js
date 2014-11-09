@@ -1,7 +1,16 @@
 angular.module('wave.controllers')
-.controller('RootCtrl', function($scope, Player, Playlists, Playqueue) {
+.controller('RootCtrl', function($scope, Player, Playlists, Playqueue, Users) {
   $scope.something = "Hello, world! Hello";
   var playing = false;
+
+  $scope.createUser = function(user) {
+    var promise = Users.create(user.username, user.id);
+
+    promise.then(function(data) {
+      Users.setCurrent(data);
+    });
+  };
+
   $scope.playpause = function(){
   	
   	if (playing == true){
@@ -13,8 +22,4 @@ angular.module('wave.controllers')
   		playing = true;
   	}
   };
-  console.log(Player);
-  console.log(Playlists.get(0));
-  console.log(Playqueue.currentTrack());
-  console.log(Playqueue.allTracks());
 });
