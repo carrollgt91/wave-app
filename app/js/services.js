@@ -120,21 +120,24 @@ angular.module("wave.services")
 })
 
 .service("Playqueue", function(Playlists){
-  var playqueue = {
+  var Playqueue = {
 
     currentIndex: 0,
     isShuffled: false,
 
+    queue: JSON.parse(localStorage.playqueue) || [],
+    shuffledQueue: JSON.parse(localStorage.shuffledPlayqueue) || [],
+
     get: function() {
-      if(!playqueue.isShuffled) {
-        return JSON.parse(localStorage.playqueue)
+      if(!Playqueue.isShuffled) {
+        return Playqueue.queue;
       } else {
-        return JSON.parse(localStorage.shuffledPlayqueue)
+        return Playqueue.shuffledQueue;
       }
     },
 
     set: function(pq) {
-      if(!playqueue.isShuffled) {
+      if(!Playqueue.isShuffled) {
         localStorage.playqueue = JSON.stringify(pq);
       } else {
         localStorage.shuffledPlayqueue = JSON.stringify(pq);
@@ -142,66 +145,66 @@ angular.module("wave.services")
     },
 
     add: function(songs) {
-      var currentQueue = playqueue.get();
+      var currentQueue = Playqueue.get();
       var queue = currentQueue.concat(songs);
-      playqueue.set(queue);
+      Playqueue.set(queue);
     },
 
     clear: function() {
-      playqueue.set([]);
+      Playqueue.set([]);
     },
 
     current: function() {
-      return playqueue.get()[playqueue.currentIndex];
+      return Playqueue.get()[Playqueue.currentIndex];
     },
 
     next: function() {
-      playqueue.currentIndex += 1;
-      return playqueue.current();
+      Playqueue.currentIndex += 1;
+      return Playqueue.current();
     },
 
     append: function(track) {
-      var queue = playqueue.get();
+      var queue = Playqueue.get();
       queue.push(track);
-      playqueue.set(queue);
+      Playqueue.set(queue);
     },
 
     previous: function() {
-      if(playqueue.currentIndex != 0) {
-        playqueue.currentIndex -= 1;
+      if(Playqueue.currentIndex != 0) {
+        Playqueue.currentIndex -= 1;
       }
-      return playqueue.current();
+      return Playqueue.current();
     },
 
     insert: function(track) {
-      var index = playqueue.currentIndex;
-      var queue = playqueue.get();
+      var index = Playqueue.currentIndex;
+      var queue = Playqueue.get();
 
       queue.splice(index, 0, track);
-      playqueue.set(queue);
+      Playqueue.set(queue);
     },
 
     jumpTo: function(track) {
-      var pq = playqueue.get();
+      var pq = Playqueue.get();
       var pqTrack = _.find(pq, function(t) {
         return track.track_id == t.track_id
       });
       var index = _.indexOf(pq, pqTrack);
       console.log(index);
-      playqueue.currentIndex = index;
+      Playqueue.currentIndex = index;
     },
 
     shuffle: function() {
-      var pq = playqueue.get();
-      playqueue.isShuffled = !playqueue.isShuffled;
-      if(playqueue.isShuffled) {
+      var pq = Playqueue.get();
+      Playqueue.isShuffled = !Playqueue.isShuffled;
+      if(Playqueue.isShuffled) {
         var shuffledPlayqueue = _.shuffle(pq);
-        playqueue.set(shuffledPlayqueue);
+        Playqueue.set(shuffledPlayqueue);
       }
     }
   };
 
-  return playqueue;
+  return Playqueue;
 })
 
 .service("Users", function($http, $q){
