@@ -95,7 +95,7 @@
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
     <ul>
-      <li class="title text-center" ng-repeat="song in playqueue track by $index" t>
+      <li class="title text-center" ng-repeat="song in Playqueue.get().slice(Playqueue.currentIndex, Playqueue.currentIndex + 10) track by $index" t>
         <img ng-src="{{ song.artwork_url }}"/>
         <div class="artist">{{ song.username }}</div>
         <span class="title">{{ song.title }}</span>

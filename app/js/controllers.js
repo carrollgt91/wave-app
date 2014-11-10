@@ -46,7 +46,7 @@ angular.module('wave.controllers')
   var likes = Users.getLikes();
   likes.then(function(data) {
     $scope.play = function() {
-      if(Playqueue.get().length == 0) {
+      if(!Playqueue.current()) {
         Playqueue.add(data);
       }
       Player.play();
@@ -64,5 +64,5 @@ angular.module('wave.controllers')
 })
 
 .controller("SidebarCtrl", function($scope, Playqueue) {
-  $scope.playqueue = Playqueue.get();
+  $scope.Playqueue = Playqueue;
 });

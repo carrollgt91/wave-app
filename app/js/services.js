@@ -139,8 +139,10 @@ angular.module("wave.services")
     set: function(pq) {
       if(!Playqueue.isShuffled) {
         localStorage.playqueue = JSON.stringify(pq);
+        Playqueue.queue = pq;
       } else {
         localStorage.shuffledPlayqueue = JSON.stringify(pq);
+        Playqueue.shuffledPlayqueue = pq;
       }
     },
 
