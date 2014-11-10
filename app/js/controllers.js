@@ -64,5 +64,5 @@ angular.module('wave.controllers')
 })
 
 .controller("SidebarCtrl", function($scope, Playqueue) {
-  $scope.Playqueue = Playqueue;
+  $scope.playqueue = Playqueue.get();
 });
