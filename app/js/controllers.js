@@ -13,45 +13,49 @@ angular.module('wave.controllers')
   $scope.Playqueue = Playqueue;
   $scope.Player = Player;
 
-  var playqueue = Users.getPlayqueue();
-  playqueue.then(function(queue) {
-    Playqueue.set(queue);
-  })
+  if(Users.current()) {
+    var playqueue = Users.getPlayqueue();
+    playqueue.then(function(queue) {
+      Playqueue.set(queue);
+    })
 
-  var likes = Users.getLikes();
-  likes.then(function(data) {
-    $scope.startPlaying = function() {
-      Playqueue.clear();
-      Player.play();
-    };
+    var likes = Users.getLikes();
+    likes.then(function(data) {
+      $scope.startPlaying = function() {
+        Playqueue.clear();
+        Player.play();
+      };
 
-    $scope.insert = function(song) {
-      if(Player.playing)
-        Player.stop();
-      Playqueue.insert(song);
-      Player.play();
-    };
+      $scope.insert = function(song) {
+        if(Player.playing)
+          Player.stop();
+        Playqueue.insert(song);
+        Player.play();
+      };
 
-    $scope.append = function(song) {
-      Playqueue.append(song);
-    };
+      $scope.append = function(song) {
+        Playqueue.append(song);
+      };
 
-    $scope.songs = data;
-    console.log($scope.songs)
-  });
+      $scope.songs = data;
+      console.log($scope.songs)
+    });
+  }
 
   window.scope = $scope;
 })
 .controller("PlayCtrl", function($scope, Player, Playqueue, Users) {
-  var likes = Users.getLikes();
-  likes.then(function(data) {
-    $scope.play = function() {
-      if(!Playqueue.current()) {
-        Playqueue.add(data);
-      }
-      Player.play();
-    };
-  });
+  if(Users.current()) {
+    var likes = Users.getLikes();
+    likes.then(function(data) {
+      $scope.play = function() {
+        if(!Playqueue.current()) {
+          Playqueue.add(data);
+        }
+        Player.play();
+      };
+    });
+  }
   
 
   $scope.Playqueue = Playqueue;

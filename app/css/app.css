@@ -21,6 +21,9 @@ html, body, .sidebar-main {
   background-color: #a4a5a6;
   width: 90px;
   position: fixed; }
+  .sidebar-main a {
+    text-decoration: none;
+    color: #333; }
   .sidebar-main .side-icon, .sidebar-main .logo {
     margin-bottom: 5px; }
   .sidebar-main .side-icon:hover, .sidebar-main .logo:hover {

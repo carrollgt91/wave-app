@@ -27,6 +27,11 @@ html, body, .sidebar-main{
 	width: 90px;
 	position: fixed;
 
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
 	.side-icon, .logo{
 		margin-bottom: 5px;
 	}

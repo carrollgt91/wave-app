@@ -125,8 +125,8 @@ angular.module("wave.services")
     currentIndex: 0,
     isShuffled: false,
 
-    queue: JSON.parse(localStorage.playqueue) || [],
-    shuffledQueue: JSON.parse(localStorage.shuffledPlayqueue) || [],
+    queue: JSON.parse(localStorage.playqueue || "{}") || [],
+    shuffledQueue: JSON.parse(localStorage.shuffledPlayqueue || "{}") || [],
 
     get: function() {
       if(!Playqueue.isShuffled) {
