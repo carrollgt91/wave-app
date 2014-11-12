@@ -17,6 +17,8 @@
   <script src="js/controllers.js"></script>
   <script src="js/services.js"></script>
   <script src="js/hack.js"></script>
+
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
 </head>
 <body>
   <div class="sidebar-main pull-left text-center">
@@ -97,10 +99,12 @@
   </div>
   <div class="sidebar-sub" ng-controller="SidebarCtrl">
     <ul>
-      <li class="title text-center" ng-repeat="song in Playqueue.get().slice(Playqueue.currentIndex, Playqueue.currentIndex + 10) track by $index" t>
-        <img ng-src="{{ song.artwork_url }}"/>
-        <div class="artist">{{ song.username }}</div>
-        <span class="title">{{ song.title }}</span>
+      <li class="title text-center" ng-repeat="song in Playqueue.get().slice(Playqueue.currentIndex, Playqueue.currentIndex + 10) track by $index">
+        <div ng-click="jump(song)">
+          <img ng-src="{{ song.artwork_url }}"/>
+          <div class="artist">{{ song.username }}</div>
+          <span class="title">{{ song.title }}</span>
+        </div>
       </li>
     </ul>
   </div>

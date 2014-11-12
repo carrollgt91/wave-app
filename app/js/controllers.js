@@ -1,5 +1,19 @@
 angular.module('wave.controllers')
 .controller('RootCtrl', function($scope, $location, Player, Playlists, Playqueue, Users) {
+  
+  SC.initialize({
+    client_id: clientId,
+    redirect_uri: "http://localhost:8080/callback.html"
+  });
+
+  $scope.auth = function() {
+    SC.connect(function() {
+      SC.get('/me', function(me) { 
+        console.log(me);
+      });
+    });
+  };
+
   $scope.createUser = function(user) {
     var promise = Users.create(user.username, user.id);
 
@@ -67,6 +81,16 @@ angular.module('wave.controllers')
   $scope.shuffle = Playqueue.shuffle;
 })
 
-.controller("SidebarCtrl", function($scope, Playqueue) {
+.controller("SidebarCtrl", function($scope, Playqueue, Player) {
   $scope.Playqueue = Playqueue;
+
+  $scope.jump = function(song) {
+    Player.stop();
+    Playqueue.jumpTo(song);
+    Player.play();
+  }
+})
+
+.controller("AuthCtrl", function($scope) {
+
 });
