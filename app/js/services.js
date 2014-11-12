@@ -243,14 +243,21 @@ angular.module("wave.services")
     localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
-  users.create = function(username, id) {
+  users.auth = function(username, id, accessToken) {
     var deferred = $q.defer();
+    var body = {
+      username: username,
+      soundcloud_id: id,
+      access_token: accessToken
+    };
 
-    $http.post(rootUrl + "/users?format=json", {username: username, soundcloud_id: id}).success(function(data, status, headers, config) {
-      deferred.resolve(data);
-    }).error(function(data, status, headers, config) {
-      console.log("error create user: " + data.body);
-    })
+    $http.post(rootUrl + "/users?format=json", body)
+      .success(function(data, status, headers, config) {
+        deferred.resolve(data);
+      }).error(function(data, status, headers, config) {
+        console.log("error auth user: " + data.body);
+      });
+
     return deferred.promise;
   };
   return users;

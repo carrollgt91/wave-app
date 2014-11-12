@@ -1,5 +1,5 @@
 angular.module('wave.controllers')
-.controller('RootCtrl', function($scope, $location, Player, Playlists, Playqueue, Users) {
+.controller('RootCtrl', function($scope, $location, Users) {
   
   SC.initialize({
     client_id: clientId,
@@ -9,17 +9,11 @@ angular.module('wave.controllers')
   $scope.auth = function() {
     SC.connect(function() {
       SC.get('/me', function(me) { 
-        console.log(me);
+        var promise = Users.auth(me.username, me.id, SC.accessToken());
+        promise.then(function(data) {
+          Users.setCurrent(data);
+        });
       });
-    });
-  };
-
-  $scope.createUser = function(user) {
-    var promise = Users.create(user.username, user.id);
-
-    promise.then(function(data) {
-      Users.setCurrent(data);
-      $location.path("/profile");
     });
   };
 })
