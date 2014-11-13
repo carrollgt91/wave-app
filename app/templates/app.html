@@ -1,4 +1,5 @@
-<div class="sidebar-main pull-left text-center">
+<div ng-controller="SidebarCtrl">
+  <div class="sidebar-main pull-left text-center" >
     <div class="logo">
       <svg version="1.1" id="logoshape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 42.593 43.543" style="enable-background:new 0 0 42.593 43.543;" xml:space="preserve">
       <g>
@@ -59,11 +60,11 @@
       </g>
       </svg>
     </div>
-    <div class="side-icon expand-sidebar" id="i-queue">
+    <div class="side-icon" ng-click="expandSidebar()" id="i-queue">
       <img src="img/queue.svg" style="padding-top:20px;">
       <p>QUEUE</p>
     </div>
-    <div class="side-icon expand-sidebar" id="i-playlist">
+    <div class="side-icon" ng-click="expandSidebar()" id="i-playlist">
       <img src="img/playlist.svg">
       <p>PLAYLISTS</p>
     </div>
@@ -74,7 +75,7 @@
       </a>
     </div>
   </div>
-  <div class="sidebar-sub" ng-controller="SidebarCtrl">
+  <div class="sidebar-sub" ng-class="{'open':sidebar.isOpen}">
     <ul>
       <li class="title text-center" ng-repeat="song in Playqueue.get().slice(Playqueue.currentIndex, Playqueue.currentIndex + 10) track by $index">
         <div ng-click="jump(song)">
@@ -85,7 +86,7 @@
       </li>
     </ul>
   </div>
-
+</div>
   <div class="app" class="container-fluid content">
     <div class="row">
       <div class="col-md-12 header" ng-controller="PlayCtrl">
