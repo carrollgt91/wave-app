@@ -27,7 +27,7 @@ module.exports = function(grunt) {
           bucket: 'www.waveplayer.co'
         },
         files: [
-          { expand: true, cwd: 'build-tmp/app/', src: ['**'], action: 'upload', dest: '.', differential: true }
+          { expand: true, cwd: 'build-tmp/', src: ['**'], action: 'upload', dest: '.', differential: true }
         ]
       } 
     },
@@ -70,6 +70,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-aws-s3');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-string-replace');
-  
+
   grunt.registerTask('deploy', ["copy:pre-build", "string-replace:release", 'aws_s3']);
 };
