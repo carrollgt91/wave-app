@@ -27,7 +27,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-aws-s3');
 
   // Default task(s).
-  grunt.registerTask('deploy', ['aws_s3']);
+  grunt.registerTask('deploy', ['release', 'aws_s3']);
   
 
 };

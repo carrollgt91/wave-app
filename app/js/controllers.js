@@ -1,23 +1,8 @@
 angular.module('wave.controllers')
 .controller('RootCtrl', function($scope, $location, Users) {
-  
-  SC.initialize({
-    client_id: clientId,
-    redirect_uri: "http://localhost:8080/callback.html"
-  });
 
-  $scope.auth = function() {
-    SC.connect(function() {
-      SC.get('/me', function(me) { 
-        var promise = Users.auth(me.username, me.id, SC.accessToken());
-        promise.then(function(data) {
-          Users.setCurrent(data);
-        });
-      });
-    });
-  };
 })
-.controller("IndexCtrl", function($scope, Users) {
+.controller("IndexCtrl", function($scope, $location, Users) {
   SC.initialize({
     client_id: clientId,
     redirect_uri: "http://localhost:8080/callback.html"
@@ -29,6 +14,7 @@ angular.module('wave.controllers')
         var promise = Users.auth(me.username, me.id, SC.accessToken());
         promise.then(function(data) {
           Users.setCurrent(data);
+          $location.path("/profile");
         });
       });
     });
