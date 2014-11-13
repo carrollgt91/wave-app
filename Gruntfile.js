@@ -52,7 +52,7 @@ module.exports = function(grunt) {
               replacement: 'rootUrl: "' + env.apiUrl + '"'
             },
             {
-              pattern: "clientId: '58bb956d274f4b5af9637dbbfe47297f'",
+              pattern: "clientId: '251c9152fb3757d609504877ed494ae0'",
               replacement: 'clientId: "' + env.clientId + '"'
             },
             {
