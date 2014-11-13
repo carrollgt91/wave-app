@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "One";
+  src: url(fonts/AWConquerorCarved/AWConquerorCarved-One.otf) format("opentype"); }
+@font-face {
+  font-family: "Light";
+  src: url(fonts/AWConquerorSans/AWConquerorSans-Light.otf) format("opentype"); }
+html, body, .sidebar-main {
+  font-family: "Light", sans-serif;
+  height: 100%;
+  margin: 0px;
+  padding: 0px; }
+
+.content {
+  margin-left: 75px;
+  padding-right: 0px; }
+
+.sidebar-main {
+  z-index: 20;
+  margin: 0px;
+  padding: 5px;
+  background-color: #a4a5a6;
+  width: 90px;
+  position: fixed; }
+  .sidebar-main a {
+    text-decoration: none;
+    color: #333; }
+  .sidebar-main .side-icon, .sidebar-main .logo {
+    margin-bottom: 5px; }
+  .sidebar-main .side-icon:hover, .sidebar-main .logo:hover {
+    cursor: pointer; }
+  .sidebar-main .side-icon {
+    cursor: pointer;
+    height: 90px; }
+    .sidebar-main .side-icon img {
+      width: 44px;
+      margin: 18px; }
+    .sidebar-main .side-icon p {
+      font-family: "One", sans-serif; }
+  .sidebar-main .logo {
+    cursor: pointer;
+    height: 90px;
+    margin-top: 50px;
+    margin-bottom: 50px; }
+    .sidebar-main .logo svg {
+      margin: 8px; }
+      .sidebar-main .logo svg path, .sidebar-main .logo svg polygon, .sidebar-main .logo svg rect {
+        fill: #dbdbdb; }
+
+.sidebar-sub {
+  width: 0px;
+  position: fixed;
+  z-index: 1;
+  margin-left: 90px;
+  background-color: #bdbdbd;
+  height: 100%;
+  /* For Safari 3.1 to 6.0 */
+  -webkit-transition-property: width;
+  -webkit-transition-duration: .4s;
+  -webkit-transition-timing-function: linear;
+  /* Standard syntax */
+  transition-property: width;
+  transition-duration: .4s;
+  transition-timing-function: linear; }
+  .sidebar-sub.open {
+    width: 400px; }
+  .sidebar-sub ul {
+    overflow: hidden;
+    list-style: none;
+    padding: 0px; }
+    .sidebar-sub ul li {
+      color: white;
+      clear: both; }
+      .sidebar-sub ul li img {
+        float: left;
+        margin: 10px; }
+      .sidebar-sub ul li .artist {
+        font-family: "One", sans-serif;
+        padding: 10px;
+        padding-top: 20px; }
+
+/*Spalsh Page*/
+#splash {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #555; }
+  #splash #back {
+    position: absolute;
+    max-width: 100%; }
+  #splash #splashlogo {
+    position: absolute;
+    max-width: 100%; }
+    #splash #splashlogo path, #splash #splashlogo polygon, #splash #splashlogo rect {
+      fill: rgba(255, 255, 255, 0.7); }
+  #splash #splash-btn {
+    position: absolute;
+    max-width: 100%; }
+    #splash #splash-btn path, #splash #splash-btn polygon, #splash #splash-btn rect, #splash #splash-btn text {
+      cursor: pointer;
+      fill: rgba(255, 255, 255, 0.7); }
+    #splash #splash-btn path:hover, #splash #splash-btn polygon:hover, #splash #splash-btn rect:hover, #splash #splash-btn text {
+      fill: rgba(255, 255, 255, 0.9); }
+
+/*Player Bar*/
+.header {
+  max-width: 100%;
+  height: 336px;
+  padding-right: 0px;
+  background-image: url("../img/headerimage.jpg"); }
+  .header .playbar {
+    height: 136px;
+    background-color: #dbdbdb;
+    margin-top: 200px;
+    padding-top: 12px; }
+    .header .playbar .main-btns {
+      max-height: 50px; }
+      .header .playbar .main-btns img {
+        height: 50px;
+        max-width: 70px;
+        margin: 10px;
+        cursor: pointer; }
+    .header .playbar .sub-btns svg {
+      cursor: pointer;
+      max-width: 40px;
+      margin: 12px;
+      margin-left: 0px; }
+      .header .playbar .sub-btns svg path {
+        fill: #a4a5a6; }
+    .header .playbar .infobox {
+      background-color: #ffffff;
+      height: 112px;
+      padding: 20px;
+      width: 95%; }
+      .header .playbar .infobox h4 {
+        font-family: "One", sans-serif; }
+      .header .playbar .infobox h5 {
+        font-family: "Light", sans-serif; }
+
+/* General Site Wide */
+.modal-content {
+  box-shadow: none;
+  border-radius: 0px; }
+
+.modal-body {
+  min-height: 100px;
+  max-height: 450px;
+  overflow-y: auto; }
+
+.btn {
+  border-radius: 0px; }
+
+/*Table Style*/
+table {
+  margin: 24px; }
+  table td {
+    padding: 10px; }
+    table td.head {
+      font-family: "One", sans-serif;
+      font-size: 20px;
+      font-weight: bold; }
+    table td img {
+      cursor: pointer;
+      height: 18px;
+      margin-left: 20px;
+      margin-right: 20px; }
+
+/*# sourceMappingURL=app.css.map */

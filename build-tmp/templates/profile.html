@@ -1,0 +1,8 @@
+<table>
+	<th>
+		<td class="head">Title</td><td class="head">Artists</td>
+	</th>
+    <tr ng-repeat="song in songs">
+        <td ng-click="append(song)"><img src="img/add.svg"></td><td ng-click="insert(song)">{{ song.title }}</td><td ng-click="insert(song)">{{ song.username }}</td>
+    </tr>
+</table>
