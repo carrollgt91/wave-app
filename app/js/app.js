@@ -9,7 +9,7 @@ var clientId = config.clientId;
 
 SC.initialize({
   client_id: clientId,
-  redirect_uri: config.redirectUri,
+  redirect_uri: config.redirectUri
 });
 
 angular.module('wave.services', []);
