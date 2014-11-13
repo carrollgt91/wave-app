@@ -1,5 +1,5 @@
 var config = {
   rootUrl: "http://malachite-api.herokuapp.com/api",
-  clientId: '251c9152fb3757d609504877ed494ae0',
+  clientId: "58bb956d274f4b5af9637dbbfe47297f",
   redirectUri: "http://waveplayer.co/callback.html"
 };
