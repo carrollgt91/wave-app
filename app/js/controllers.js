@@ -17,6 +17,24 @@ angular.module('wave.controllers')
     });
   };
 })
+.controller("IndexCtrl", function($scope, Users) {
+  SC.initialize({
+    client_id: clientId,
+    redirect_uri: "http://localhost:8080/callback.html"
+  });
+
+  $scope.auth = function() {
+    SC.connect(function() {
+      SC.get('/me', function(me) { 
+        var promise = Users.auth(me.username, me.id, SC.accessToken());
+        promise.then(function(data) {
+          Users.setCurrent(data);
+        });
+      });
+    });
+  };
+  console.log("we be indexin' y'all");
+})
 .controller('ProfileCtrl', function($scope, Users, Playqueue, Player) {
   $scope.Playqueue = Playqueue;
   $scope.Player = Player;

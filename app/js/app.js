@@ -12,17 +12,21 @@ angular.module('wave.controllers', []);
 //routing
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state("index", {
+      url: "",
+      templateUrl: "templates/splash.html",
+      controller: "IndexCtrl"
+    })
     .state('root', {
-      url: "/create",
       templateUrl: "templates/app.html",
       controller: "RootCtrl"
     })
-    .state('profile', {
+    .state('root.profile', {
       url: "/profile",
       templateUrl: "templates/profile.html",
       controller: "ProfileCtrl"
     })
-    .state('auth', {
+    .state('root.auth', {
       url: "/auth",
       templateUrl: "templates/auth.html",
       controller: "AuthCtrl"
