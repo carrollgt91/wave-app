@@ -3,7 +3,6 @@ var app = angular.module('wave', ["ui.router", "wave.controllers", "wave.service
 
 var env = "development";
 
-// var rootUrl = "http://localhost:3000/api"
 var rootUrl = "http://malachite-api.herokuapp.com/api";
 var clientId = config.clientId;
 
