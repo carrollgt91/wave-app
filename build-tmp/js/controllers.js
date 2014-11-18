@@ -76,6 +76,13 @@ angular.module('wave.controllers')
 
 .controller("SidebarCtrl", function($scope, Playqueue, Player) {
   $scope.Playqueue = Playqueue;
+  $scope.sidebar = {};
+  $scope.sidebar.isOpen = false;
+
+  $scope.expandSidebar = function() {
+    console.log($scope.sidebar.isOpen)
+    $scope.sidebar.isOpen = !$scope.sidebar.isOpen;
+  };
 
   $scope.jump = function(song) {
     Player.stop();
